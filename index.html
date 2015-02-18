@@ -1,20 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <script type="text/javascript">
+        var editorDoc;
+        function InitEditable () {
+            var editor = document.getElementById ("editor");
+            editorDoc = editor.contentWindow.document;          
+            var editorBody = editorDoc.body;
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>test</title>
-		<meta name="author" content="Biche" />
-		<!-- Date: 2015-02-11 -->
-	</head>
-	<body>
-		<h1>Coucou les mecs</h1>
-		<p>merde</p>
-		<p>ça pue</p>
-		<textarea>
-			prout
-		</textarea>
-	</body>
-</html>
+                // turn off spellcheck
+            if ('spellcheck' in editorBody) {    // Firefox
+                editorBody.spellcheck = false;
+            }
 
+            if ('contentEditable' in editorBody) {
+                    // allow contentEditable
+                editorBody.contentEditable = true;
+            }
+            else {  // Firefox earlier than version 3
+                if ('designMode' in editorDoc) {
+                        // turn on designMode
+                    editorDoc.designMode = "on";                
+                }
+            }
+        }
+
+        function ToggleBold () {
+            editorDoc.execCommand ('bold', false, null);
+        }
+    </script>
+</head>
+<body onload="InitEditable ();">
+    <br />
+    <iframe id="editor" src="editable.html"></iframe>
+    <br /><br />
+    <br />
+    <button onclick="ToggleBold ();">Gras</button>
+</body>
