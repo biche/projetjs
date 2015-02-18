@@ -10,11 +10,34 @@
 		var defaults = {};
 				
 		var options = $.extend(defaults, options);
-		
-		this.each(function(){
-				
-			var obj = $(this);
+		this.each(function(i,elt){
 			
+			var obj = $(this);
+			if(i==0){
+				$(obj).after("<div class='add'><input class='addValue' /> <input type='button' value='Add' class='addBtn' /></div>");
+				
+				// Bouton ajouter
+				$(".addBtn").click(function(){
+					// Si le texte n'est pas vide
+					if($(".addValue").val() != "")
+					{
+						// On ajoute un nouvel item � notre liste
+						$(obj).append('<li>'+$(".addValue").val()+'</li>');
+						// On r�initialise le champ de texte pour l'ajout
+						$(".addValue").val("");
+						// On ajoute les contr�les � notre nouvel item
+						addControls($(obj).find("li:last-child"));
+					}
+				});
+				// On autorise �galement la validation de la saisie d'un nouvel item par pression de la touche entr�e
+				$(".addValue").live("keyup", function(e) {
+					if(e.keyCode == 13) {
+						// On lance l'�v�nement click associ� au bouton d'ajout d'item
+						$(".addBtn").trigger("click");
+					}
+				});
+			}
+				
 			// Emp�cher la s�lection des �l�ments � la sourirs (meilleure gestion du drag & drop)
 			var _preventDefault = function(evt) { evt.preventDefault(); };
 			$("li").bind("dragstart", _preventDefault).bind("selectstart", _preventDefault);
@@ -26,6 +49,7 @@
 				handle: ".item", // Le drag ne peut se faire que sur l'�l�ment .item (le texte)
 				distance: 10, // Le drag ne commence qu'� partir de 10px de distance de l'�l�ment
 				// Evenement appel� lorsque l'�l�ment est relach�
+				connectWith : "ul",
 				stop: function(event, ui){
 					// Pour chaque item de liste
 					$(obj).find("li").each(function(){
@@ -36,13 +60,13 @@
 					});
 				}
 			});
+			i++;
 			$("ul").dragable;
 			/*
 			// On ajoute l'�l�ment Poubelle � notre liste
-			$(obj).after("<div class='trash'>Trash</div>");
-			// On ajoute un petit formulaire pour ajouter des items
-			$(obj).after("<div class='add'><input class='addValue' /> <input type='button' value='Add' class='addBtn' /></div>");
-				*/	
+			$(obj).after("<div class='trash'>Trash</div>");*/
+			 //On ajoute un petit formulaire pour ajouter des items
+					
 			// Action de la poubelle
 			// Initialisation du composant Droppable
 			/*$(".trash").droppable({
@@ -90,28 +114,9 @@
 			*
 			* @Return void
 			*/
-			/*
-			// Bouton ajouter
-			$(".addBtn").click(function(){
-				// Si le texte n'est pas vide
-				if($(".addValue").val() != "")
-				{
-					// On ajoute un nouvel item � notre liste
-					$(obj).append('<li>'+$(".addValue").val()+'</li>');
-					// On r�initialise le champ de texte pour l'ajout
-					$(".addValue").val("");
-					// On ajoute les contr�les � notre nouvel item
-					addControls($(obj).find("li:last-child"));
-				}
-			})
-			// On autorise �galement la validation de la saisie d'un nouvel item par pression de la touche entr�e
-			$(".addValue").live("keyup", function(e) {
-				if(e.keyCode == 13) {
-					// On lance l'�v�nement click associ� au bouton d'ajout d'item
-					$(".addBtn").trigger("click");
-				}
-			});
-			*/
+			
+			
+			
 			// Pour chaque �l�ment trouv� dans la liste de d�part
 			$(obj).find("li").each(function(){
 				// On ajoute les contr�les
@@ -150,7 +155,7 @@
 				else
 					// On modifie la classe en retirant la classe "checked"
 					$(this).removeClass("checked").addClass("unchecked");
-			})
+			});
 			
 			// Au double clic sur le texte
 			$(elt).find(".item").dblclick(function(){
@@ -160,7 +165,7 @@
 				$(this).html("<input value='"+txt+"' />");
 				// On la s�lectionne par d�faut
 				$(this).find("input").select();
-			})
+			});
 			
 			// Lorsque l'on quitte la zone de saisie du texte
 			$(elt).find(".item input").live("blur", function(){
@@ -168,7 +173,7 @@
 				txt = $(this).val();
 				// On ins�re dans le <li> la nouvelle valeur textuelle
 				$(this).parent().html(txt);
-			})
+			});
 			
 			// On autorise la m�me action lorsque l'on valide par la touche entr�e
 			$(elt).find(".item input").live("keyup", function(e) {
