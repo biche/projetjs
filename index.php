@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
+    	<script src="js/jquery-1.4.2.min.js"></script>
+    	<script type="text/javascript">
         var editorDoc;
         function InitEditable () {
             var editor = document.getElementById ("editor");
@@ -26,7 +27,16 @@
                 }
             }
         }
-
+		function test(){
+			var editor = document.getElementById ("editor");
+            editorDoc = editor.contentWindow.document;          
+            var editorBody = editorDoc.body;
+            $.ajax({
+       			url : 'test.php',
+       			type : 'POST',
+      	 		data: "contenu=" + editorBody.innerHTML,
+    		});
+		}
         function ToggleBold () {
             editorDoc.execCommand ('bold', false, null);
         }
@@ -95,5 +105,6 @@
     <button onclick="formatDoc('paste');">Coller</button>
     <button onclick="formatDoc('undo');">Annuler</button>
     <button onclick="formatDoc('redo');">Refaire</button>
+    <button onclick="test();">Send</button>
 </body>
 </html>
