@@ -79,12 +79,13 @@ function afficheEdit(){
 }
 function modifPage(){
 	var editor = document.getElementById ("editor");
-    editorDoc = editor.contentWindow.document;          
+    editorDoc = editor.contentWindow.document;
+    var page='<!DOCTYPE HTML>\n<html>\n\t' + editorDoc.documentElement.innerHTML + '\n</html>';          
     var editorBody = editorDoc.body;
     $.ajax({
 		url : 'test.php',
 		type : 'POST',
- 		data: "contenu=" + editorBody.innerHTML,
+ 		data: "contenu=" + page,
 	});
 	alert(editorBody.innerHTML);
 }

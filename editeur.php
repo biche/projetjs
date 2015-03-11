@@ -69,7 +69,7 @@
 		<button onclick="formatDoc('paste');modifPage();">Coller</button>
 		<button onclick="formatDoc('undo');modifPage();">Annuler</button>
 		<button onclick="formatDoc('redo');modifPage();">Refaire</button>
-		<!-- <button onclick="test();">Send</button> -->
+		<button onclick="modifPage();">Send</button>
 		<?php
 			var_dump($_SESSION{'pageName'});
 		?>
