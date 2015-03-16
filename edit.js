@@ -98,3 +98,21 @@ function formatDoc(sCmd,valeur) {
 	editorDoc.execCommand(sCmd, false, valeur);
 	editor.focus();
 }
+function creerPage(){
+	var nomPage=document.getElementById("nom").value;
+	alert(nomPage);
+	if (nomPage == '') {
+		alert("coucou");
+		}else{
+		var editor = document.getElementById ("editor");
+	    editorDoc = editor.contentWindow.document;
+	    var page='<!DOCTYPE HTML>\n<html>\n\t' + editorDoc.documentElement.innerHTML + '\n</html>';          
+	    var editorBody = editorDoc.body;
+	    alert(page);
+	    $.ajax({
+			url : 'creer.php',
+			type : 'POST',
+	 		data: "contenu=" + page + '&nomPage=' + nomPage,
+		});
+	}
+}
