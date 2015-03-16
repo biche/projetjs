@@ -69,6 +69,62 @@
 		<button onclick="formatDoc('paste');modifPage();">Coller</button>
 		<button onclick="formatDoc('undo');modifPage();">Annuler</button>
 		<button onclick="formatDoc('redo');modifPage();">Refaire</button>
+		<form action="#" method="post" enctype="multipart/form-data">
+    		Select image to upload:
+    		<input type="file" name="fileToUpload" id="fileToUpload">
+    		<input type="submit" value="Upload Image" name="submit">
+		</form>
+<?php
+	if(isset($_FILES["fileToUpload"])){
+		$target_dir = "upload/";
+		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		// Vérifie que c'est une image
+		if(isset($_POST["submit"])) {
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        echo "Se fichier est une image - " . $check["mime"] . ".";
+		        $uploadOk = 1;
+		    } else {
+		        echo "Se fichier n'est pas une image";
+		        $uploadOk = 0;
+		    }
+		}
+		// Vérifie que le fichier n'existe pas
+		if (file_exists($target_file)) {
+		    echo "Le fichier existe déjà.";
+		    $uploadOk = 0;
+		}
+		// Vérifie la taille de l'image
+		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		    echo "Votre image est trop grande.";
+		    $uploadOk = 0;
+		}
+		// Extentions d'images accepté
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    echo "Le format de l'image doit être : JPG, JPEG, PNG ou GIF";
+		    $uploadOk = 0;
+		}
+		// Vérifie si les conditions pour l'upload sont remplies
+		if ($uploadOk == 0) {
+		    echo "Votre image n'a pas était envoyé";
+		// Nous allons essyé d'upload
+		} else {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		        echo "Votre image ". basename( $_FILES["fileToUpload"]["name"]). " a bien été envoyé.";
+		    } else {
+		        echo "Votre n'a pas été envoyé";
+		    }
+		}?>
+		<script>
+			var chemin='upload/' + <?php basename( $_FILES["fileToUpload"]["name"]);?>;
+			editorDoc.execCommand('insertImage', false, chemin);
+			editor.focus();
+		</script>
+<?php	}
+?> 
 		<button onclick="modifPage();">Send</button>
 	</body>
 </html>
