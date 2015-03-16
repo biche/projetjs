@@ -2,6 +2,7 @@
 	//$pageName = $_POST["pageName"];
 	//var_dump($pageName);
 	session_start();
+	echo "coucou";
 	$contenu = $_POST["contenu"];
 	$fichier_a_ouvrir = fopen ($_SESSION{'pageName'}, "w+");
 	//On écrit dans le fichier
