@@ -8,8 +8,8 @@
     	</script>
         <script src="edit.js" type="text/javascript" charset="utf-8"></script>
     </head>
-	<body spellcheck="false" contenteditable="true">
-		<button onclick="sendPageName();">Modifier</button>
+	<body spellcheck="false" contenteditable="true"><h1>Test</h1><button onclick="sendPageName();">Modifier</button>
 		<button onclick="document.location='creation.php';">Créer</button>
+
 </body>
 </html>

@@ -12,10 +12,11 @@
     </head>
 	<body onload="InitEditable()">
 		<br /> 
-		<iframe id="editor" src="" style="width: 80%;height: 200%;"> </iframe>
+		<!-- Iframe permet la saisie et l'interprétation du HTML  -->
+		<iframe id="editor" src="template.php" style="width: 80%;height: 200%;"> </iframe>
 		<br /><br />
 		<br />
-		
+		<!-- FormatDoc permettant de la mise en forme du code HTML  -->
 		<button onclick="formatDoc('bold');">Gras</button>
 		<button onclick="formatDoc('italic');">Italique</button>
 		<button onclick="formatDoc('underline');">Souligné</button>
@@ -70,12 +71,14 @@
 		<button onclick="formatDoc('paste');">Coller</button>
 		<button onclick="formatDoc('undo');">Annuler</button>
 		<button onclick="formatDoc('redo');">Refaire</button>
+		<!-- Upload d'image -->
 		<form action="#" method="post" enctype="multipart/form-data">
     		Select image to upload:
     		<input type="file" name="fileToUpload" id="fileToUpload">
     		<input type="submit" value="Upload Image" name="submit">
 		</form>
-		<button onclick="formatDoc('insertImage','upload/<?php if(isset($_FILES["fileToUpload"])){echo basename( $_FILES["fileToUpload"]["name"]);} ?>');">Refaire</button>
+		<!-- Envoi de l'image -->
+		<button onclick="formatDoc('insertImage','upload/<?php if(isset($_FILES["fileToUpload"])){echo basename( $_FILES["fileToUpload"]["name"]);} ?>');">Envoi de l'image</button>
 <?php
 	if(isset($_FILES["fileToUpload"])){
 		$target_dir = "upload/";
