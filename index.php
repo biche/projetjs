@@ -10,7 +10,6 @@
     </head>
 	<body spellcheck="false" contenteditable="true">
 		<button onclick="sendPageName();">Modifier</button>
-		<a href="creation.php"><button">Créer</button"></a><br><b>Coucou</b><br>
-	
+		<button onclick="document.location='creation.php';">Créer</button>
 </body>
 </html>

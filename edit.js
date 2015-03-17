@@ -82,12 +82,13 @@ function modifPage(){
     editorDoc = editor.contentWindow.document;
     var page='<!DOCTYPE HTML>\n<html>\n\t' + editorDoc.documentElement.innerHTML + '\n</html>';          
     var editorBody = editorDoc.body;
+    var h=editorDoc.getElementsByTagName("h1");
+    alert(h[0].innerHTML);
     $.ajax({
 		url : 'test.php',
 		type : 'POST',
  		data: "contenu=" + page,
 	});
-	alert(editorBody.innerHTML);
 }
 function ToggleBold () {
     editorDoc.execCommand ('bold', false, null);
@@ -100,7 +101,8 @@ function formatDoc(sCmd,valeur) {
 }
 function creerPage(){
 	var nomPage=document.getElementById("nom").value;
-	alert(nomPage);
+	var h=editorDoc.getElementsByTagName("h1");
+    alert(h[0].innerHTML);
 	if (nomPage == '') {
 		alert("coucou");
 		}else{
@@ -108,7 +110,6 @@ function creerPage(){
 	    editorDoc = editor.contentWindow.document;
 	    var page='<!DOCTYPE HTML>\n<html>\n\t' + editorDoc.documentElement.innerHTML + '\n</html>';          
 	    var editorBody = editorDoc.body;
-	    alert(page);
 	    $.ajax({
 			url : 'creer.php',
 			type : 'POST',

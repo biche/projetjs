@@ -74,6 +74,7 @@
     		<input type="file" name="fileToUpload" id="fileToUpload">
     		<input type="submit" value="Upload Image" name="submit">
 		</form>
+		<button onclick="formatDoc('insertImage','upload/<?php if(isset($_FILES["fileToUpload"])){echo basename( $_FILES["fileToUpload"]["name"]);} ?>');">Refaire</button>
 <?php
 	if(isset($_FILES["fileToUpload"])){
 		$target_dir = "upload/";
@@ -118,11 +119,6 @@
 		        echo "Votre n'a pas été envoyé";
 		    }
 		}?>
-		<script>
-			var chemin='upload/' + <?php basename( $_FILES["fileToUpload"]["name"]);?>;
-			editorDoc.execCommand('insertImage', false, chemin);
-			editor.focus();
-		</script>
 <?php	}
 ?> 
 		<button onclick="modifPage();">Send</button>
