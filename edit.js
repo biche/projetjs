@@ -12,7 +12,6 @@ function InitEditable () {
 	    var editor = document.getElementById ("editor");
 	    editorDoc = editor.contentWindow.document;
 	    var editorBody = editorDoc.body;
-	
 	        // turn off spellcheck
 	    if ('spellcheck' in editorBody) {    // Firefox
 	        editorBody.spellcheck = false;

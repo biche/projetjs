@@ -74,7 +74,7 @@
     		<input type="file" name="fileToUpload" id="fileToUpload">
     		<input type="submit" value="Upload Image" name="submit">
 		</form>
-		<button onclick="formatDoc('insertImage','upload/<?php if(isset($_FILES["fileToUpload"])){echo basename( $_FILES["fileToUpload"]["name"]);} ?>');">Refaire</button>
+		<button onclick="formatDoc('insertImage','upload/<?php if(isset($_FILES["fileToUpload"])){echo basename( $_FILES["fileToUpload"]["name"]);} ?>');">Envoi de l'image</button>
 <?php
 	if(isset($_FILES["fileToUpload"])){
 		$target_dir = "upload/";
