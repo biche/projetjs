@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <html>
-	<head></head><body spellcheck="false" contenteditable="true"><h1>Titre de la Convocation</h1><img src="upload/Best download.jpg">
-</body>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="import" href="editable.html">
+    	<script src="js/jquery-1.4.2.min.js"></script>
+    	<script type="text/javascript">
+    	</script>
+        <script src="edit.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+	<body spellcheck="false" contenteditable="true">
+		<button onclick="sendPageName();">Modifier</button>
+		<button onclick="document.location='creation.php';">Créer</button>
+	</body>
 </html>

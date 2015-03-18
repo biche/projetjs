@@ -18,37 +18,48 @@
 		<!-- FormatDoc permettant de la mise en forme du code HTML  -->
 		<div style="margin:50px;">
 			<div class="btn-group" role="group" aria-label="1">
+				<!-- Mettre en gras -->
 			  	<button type="button" class="btn btn-default" onclick="formatDoc('bold');"><span class="fa fa-fw fa-bold"></span></button>
+			  	<!-- Mettre en italic -->
 			 	<button type="button" class="btn btn-default" onclick="formatDoc('italic');"><span class="fa fa-fw fa-italic"></span></button>
+			 	<!-- Souligner -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('underline');"><span class="fa fa-fw fa-underline"></span></button>
 			</div>
 
 
 
 			<div class="btn-group" role="group" aria-label="2">
+				<!-- Aligner à gauche -->
 			  	<button type="button" class="btn btn-default" onclick="formatDoc('justifyleft');"><span class="fa fa-fw fa-align-left"></span></button>
+			  	<!-- Centrer -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('justifycenter');"><span class="fa fa-fw fa-align-center"></span></button>
+				<!-- Aligner à droite -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('justifyright');"><span class="fa fa-fw fa-align-right"></span></button>
 			</div>
 
 			<div class="btn-group" role="group" aria-label="3">
+				<!-- Insertion d'une ordonné -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('insertorderedlist');"><span class="fa fa-fw fa-list-ol"></span></button>
+				<!-- Insertion d'une liste -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('insertunorderedlist');"><span class="fa fa-fw fa-list-ul"></span></button>
 			</div>
 
-			<div class="btn-group" role="group" aria-label="4">
+			<!--<div class="btn-group" role="group" aria-label="4">
 				<button type="button" class="btn btn-default" onclick="formatDoc('cut');"><span class="fa fa-fw fa-cut"></span></button>
 				<button type="button" class="btn btn-default" onclick="formatDoc('copy');"><span class="fa fa-fw fa-copy"></span></button>
 				<button type="button" class="btn btn-default" onclick="formatDoc('paste');"><span class="fa fa-fw fa-paste"></span></button>
-			</div>
+			</div>-->
 
 			<div class="btn-group" role="group" aria-label="5">
+				<!-- CTRL + Z -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('undo');"><span class="fa fa-fw fa-undo"></span></button>
+				<!-- CTRL + C -->
 				<button type="button" class="btn btn-default" onclick="formatDoc('redo');"><span class="fa fa-fw fa-repeat"></span></button>
 			</div>
 
 			<div class="form-group form-group-sm">
 				<div class="col-xs-2">
+					<!-- Format du texte -->
 					<select class="form-control" onchange="formatDoc('formatblock',this[this.selectedIndex].value);">
 						<option selected>Format</option>
 						<option value="h1">Titre 1 &lt;h1&gt;</option>
@@ -59,6 +70,7 @@
 						<option value="h6">Sous-titre &lt;h6&gt;</option>
 						<option value="p">Paragraphe &lt;p&gt;</option>
 					</select>
+					<!-- Police de caractère -->
 					<select onchange="formatDoc('fontname',this[this.selectedIndex].value);">
 						<option selected>Police de caractère</option>
 						<option>Arial</option>
@@ -66,6 +78,7 @@
 						<option>Courier New</option>
 						<option>Times New Roman</option>
 					</select>
+					<!-- Taille -->
 					<select onchange="formatDoc('fontsize',this[this.selectedIndex].value);">
 						<option class="heading" selected>Taille</option>
 						<option value="1">Très petit</option>
@@ -76,6 +89,7 @@
 						<option value="6">Très gros</option>
 						<option value="7">Maximum</option>
 					</select>
+					<!-- Couleur du texte -->
 					<select onchange="formatDoc('forecolor',this[this.selectedIndex].value);">
 						<option class="heading" selected>Couleur du texte</option>
 						<option value="red">Rouge</option>
@@ -83,6 +97,7 @@
 						<option value="green">Vert</option>
 						<option value="black">Noir</option>
 					</select>
+					<!-- Couleur de fond du texte -->
 					<select onchange="formatDoc('backcolor',this[this.selectedIndex].value);">
 						<option class="heading" selected>Couleur de l'arrière plan</option>
 						<option value="red">rouge</option>

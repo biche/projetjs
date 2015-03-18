@@ -35,7 +35,7 @@ function sendPageName(){
 	var nom = window.location.pathname;
 	nom=nom.split("/");
 	nom=nom[nom.length - 1];
-	alert(nom);
+	//alert(nom);
 	$.ajax({
 		url : 'envoi.php',
 		type : 'POST',
@@ -47,7 +47,7 @@ function afficheEdit(){
 	var nom = window.location.pathname;
 	nom=nom.split("/");
 	nom=nom[nom.length - 1];
-	alert(nom);
+	//alert(nom);
 	var cache = document.getElementById ("cacher");
     var cacheDoc = cache.contentWindow.document;          
     var cacheBody = cacheDoc.body;
@@ -82,7 +82,7 @@ function modifPage(){
     var page='<!DOCTYPE HTML>\n<html>\n\t' + editorDoc.documentElement.innerHTML + '\n</html>';          
     var editorBody = editorDoc.body;
     var h=editorDoc.getElementsByTagName("h1");
-    alert(h[0].innerHTML);
+    //alert(h[0].innerHTML);
     $.ajax({
 		url : 'test.php',
 		type : 'POST',
@@ -101,7 +101,7 @@ function formatDoc(sCmd,valeur) {
 function creerPage(){
 	var nomPage=document.getElementById("nom").value;
 	var h=editorDoc.getElementsByTagName("h1");
-    alert(h[0].innerHTML);
+    //alert(h[0].innerHTML);
 	if (nomPage == '') {
 		alert("coucou");
 		}else{

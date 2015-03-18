@@ -36,11 +36,11 @@
 				<button type="button" class="btn btn-default" onclick="formatDoc('insertunorderedlist');modifPage();"><span class="fa fa-fw fa-list-ul"></span></button>
 			</div>
 
-			<div class="btn-group" role="group" aria-label="4">
+			<!--<div class="btn-group" role="group" aria-label="4">
 				<button type="button" class="btn btn-default" onclick="formatDoc('cut');modifPage();"><span class="fa fa-fw fa-cut"></span></button>
 				<button type="button" class="btn btn-default" onclick="formatDoc('copy');modifPage();"><span class="fa fa-fw fa-copy"></span></button>
 				<button type="button" class="btn btn-default" onclick="formatDoc('paste');modifPage();"><span class="fa fa-fw fa-paste"></span></button>
-			</div>
+			</div>-->
 
 			<div class="btn-group" role="group" aria-label="5">
 				<button type="button" class="btn btn-default" onclick="formatDoc('undo');modifPage();"><span class="fa fa-fw fa-undo"></span></button>
